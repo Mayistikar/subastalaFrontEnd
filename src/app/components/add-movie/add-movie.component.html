@@ -1,0 +1,73 @@
+<div class="container main-container">
+
+<div *ngIf="alert" class="myAlert-top alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error!</strong> El formulario está incompleto.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="jumbotron">
+  <form  (ngSubmit)="guardar(forma)" #forma="ngForm">
+    <div class="form-group">
+      <label for="codeMovie">Código</label>
+      <input  type="text" 
+              class="form-control" 
+              id="codeMovie" 
+              aria-describedby="codeMovie" 
+              placeholder="Código de la película"
+              name="codeMovie"
+              [(ngModel)]="movie.code"
+              required
+              #codigo="ngModel">
+
+      <small  *ngIf="codigo.errors?.required" 
+              id="codeMovie" 
+              class="form-text text-muted">
+        El código de la película es obligatorio.
+      </small>
+
+    </div>
+    <div class="form-group">
+      <label for="nameMovie">Nombre</label>
+      <input  type="text" 
+              class="form-control" 
+              id="nameMovie" 
+              placeholder="Nombre de la película"
+              name="nameMovie"
+              [(ngModel)]="movie.name"
+              required
+              #name="ngModel">
+
+      <small  *ngIf="name.errors?.required" 
+              id="codeMovie" 
+              class="form-text text-muted">
+        El nombre de la película es obligatorio.
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="descMovie">Descripción</label>      
+      <textarea class="form-control" 
+                id="descMovie" 
+                rows="3" 
+                name="descMovie" 
+                [(ngModel)]="movie.desc">
+      </textarea>
+    </div>
+    <div class="form-group">
+      <label for="genereMovie">Género</label>
+      <input  type="text" 
+              class="form-control" 
+              id="genereMovie" 
+              placeholder="Género de la película"
+              name="genereMovie"
+              [(ngModel)]="movie.genere">
+    </div>
+    <button [disabled]="!forma.valid"
+            type="submit"
+            class="btn btn-primary">
+      Guardar
+    </button>
+  </form>
+</div>
+</div>

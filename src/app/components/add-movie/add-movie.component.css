@@ -1,0 +1,15 @@
+.main-container {
+    margin-top: 10px;
+}
+
+input.ng-invalid.ng-touched:not(form) {
+    border: 1px solid red;
+}
+
+.myAlert-top{    
+    text-align: center;
+    position: fixed;
+    top: 5px; 
+    right: 2%;
+    width: 50%;    
+}
